@@ -13,7 +13,7 @@ Herhangi bir noktada yalnızca bir kare aktif olabilir (ya da hiçbiri)
 
 Aşaıdaki yorumları takip edin.
 */
-
+/*
 import React from 'react';
 
 
@@ -60,6 +60,39 @@ export default function Kareler() {
             </div>
           )
         }
+      </div>
+    </div>
+  );
+}
+*/
+import React, { useState } from 'react';
+
+const KareIdListesi = ['sqA', 'sqB', 'sqC', 'sqD'];
+
+export default function Kareler() {
+  const [kareler, setKareler] = useState(KareIdListesi); // kare id'lerini tutacak state dilimi
+  const [aktifKare, setAktifKare] = useState(null); // aktif kareyi tutacak state dilimi
+
+  const ClassAdiAl = id => {
+    return id === aktifKare ? 'active' : ''; // aktif kare ise 'active' class'ını döndür
+  };
+
+  const AktifEt = id => {
+    setAktifKare(prevAktifKare => (prevAktifKare === id ? null : id)); // id, şu anda aktif kare ise state'i sıfırla, değilse id'yi aktif kare yap
+  };
+
+  return (
+    <div className='widget-squares container'>
+      <h2>Kareler</h2>
+      <div className='squares'>
+        {kareler.map(id => ( // kareler state dilimini kullanarak kareleri oluştur
+          <div
+            id={id}
+            key={id}
+            className={`square ${ClassAdiAl(id)}`}
+            onClick={() => AktifEt(id)}
+          ></div>
+        ))}
       </div>
     </div>
   );

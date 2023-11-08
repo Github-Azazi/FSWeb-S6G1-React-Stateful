@@ -34,24 +34,46 @@ ADIM 4:
   Bu click handlerın, "açık olup olmadığını" şu anda olduğunun tersi olacak şekilde ayarlayarak döndürücüyü değiştirmesi gerekir.
   "not" için kullandığımız operatörü hatırlıyor musunuz??
 */
-
-import React from 'react'; /* STEP 0 */
+/*
+import React from 'react'; 
 
 export default function Dondurucu() {
-/* ADIM 1 */
+
 
   const toggleDondurucu = () => {
-  /* ADIM 4 */
+  
   };
 
   return (
     <div className='widget-spinner container'>
       <h2>Döndürücü</h2>
       {
-        true && <div id='döndürücü' className='spinner'>--+--</div> /* ADIM 2 */
+        true && <div id='döndürücü' className='spinner'>--+--</div> 
       }
       <button id='toggleDondurucu' onClick={toggleDondurucu}>
-         Gizle {/* STEP 3 */}
+         Gizle {}
+      </button>
+    </div>
+  );
+}
+*/
+import React, { useState } from 'react'; // ADIM 0
+
+export default function Dondurucu() {
+  const [dondurucuAcik, setDondurucuAcik] = useState(false); // ADIM 1
+
+  const toggleDondurucu = () => {
+    setDondurucuAcik(!dondurucuAcik); // ADIM 4
+  };
+
+  return (
+    <div className='widget-spinner container'>
+      <h2>Döndürücü</h2>
+      {
+        dondurucuAcik && <div id='döndürücü' className='spinner'>--+--</div> // ADIM 2
+      }
+      <button id='toggleDondurucu' onClick={toggleDondurucu}>
+        {dondurucuAcik ? 'Gizle' : 'Göster'} {/* ADIM 3 */}
       </button>
     </div>
   );

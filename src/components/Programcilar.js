@@ -10,9 +10,9 @@ Aynı zaman içinde yalnız bir harika programcıyı öne çıkarabiliriz.
 
 Yorumları takip edin.
 */
-
+/*
 import React from 'react';
-/* ADIM 0  */
+
 
 
 // Bu değişkeni YALNIZCA bir state dilimini başlatmak için kullanın!
@@ -55,9 +55,9 @@ export default function Programcilar() {
           // Şöyle diyebiliriz: "aa bu çalışıyor!" Ama programcilar bir state diliminden gelmiyorsa,
           // asla yeni programci ekleyemeyiz, programcilari düzenleyemeyiz ya da silemeyiz. Düzeltin!
           " */
-          enIyilerListesi.map(dev =>
+          /*enIyilerListesi.map(dev =>
             <div className='programmer' key={dev.id}>
-              {dev.isim} <button onClick={() => {/* burada dev.id 'yi öne çıkan id'ye atayın */ }}>Kutla</button>
+              {dev.isim} <button onClick={() => {/* burada dev.id 'yi öne çıkan id'ye atayın */ /*}}>Kutla</button>
             </div>
           )
         }
@@ -75,4 +75,50 @@ export default function Programcilar() {
     </div>
   );
 }
- 
+ */
+import React, { useState } from 'react';
+
+export const enIyilerListesi = [
+  { id: '1', isim: 'Ada Lovelace' },
+  { id: '2', isim: 'Grace Hopper' },
+  { id: '3', isim: 'Evelyn Boyd Granville' },
+  { id: '4', isim: 'Mary Kenneth Keller' },
+  { id: '5', isim: 'Frances Allen' },
+  { id: '6', isim: 'Carol Shaw' },
+];
+
+export default function Programcilar() {
+  const [programcilar, setProgramcilar] = useState(enIyilerListesi); // programcılar listesini tutacak state dilimi
+  const [oneCikanId, setOneCikanId] = useState(''); // öne çıkan programcının id'sini tutacak state dilimi
+
+  const oneCikaninIsmi = () => {
+    const oneCikan = programcilar.find(dev => dev.id === oneCikanId); // öne çıkan programcıyı bul
+    return oneCikan ? oneCikan.isim : ''; // eğer öne çıkan varsa ismini döndür, yoksa boş döndür
+  };
+
+  const stil = {
+    fontSize: '1.5em',
+    marginTop: '0.5em',
+    color: oneCikanId ? 'gold' : 'royalblue', // öne çıkan varsa renk gold, yoksa royalblue
+  };
+
+  return (
+    <div className='widget-programmers container'>
+      <h2>Programcılar</h2>
+      <div className='programmers'>
+        {programcilar.map(dev => (
+          <div className='programmer' key={dev.id}>
+            {dev.isim} <button onClick={() => setOneCikanId(dev.id)}>Kutla</button>
+          </div>
+        ))}
+      </div>
+      <div id='featured' style={stil}>
+        {
+          oneCikanId
+            ? `🎉 Hadi ${oneCikaninIsmi()}\'ı kutlayalım! 🥳`
+            : 'Harika bir programcı seçin'
+        }
+      </div>
+    </div>
+  );
+}

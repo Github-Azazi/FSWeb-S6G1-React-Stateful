@@ -28896,71 +28896,115 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = Sayac;
-var _react = _interopRequireDefault(require("react"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-/*
-SAYAÇ Talimatları
-
-Aşağıdaki kısa videoyu izleyin, UI ve Chrome Devtools'a dikkat edin:
-https://www.ergineer.com/assets/materials/a664dfe7-sayac.gif
-
-Bu Sayacı oluşturmak için kaç adet state dilimine ihtiyacınız var? Başlamadan önce biraz üzerine düşünün!
-
-Saf bir geliştirici 3 farklı state dilimi diyebilir:
-  - Sayıcı
-  - Metnin kırmızı mı yoksa mavi mi olduğu
-  - Metnin "çift" mi yoksa "tek" mi olduğu
-
-Ancak burada sadece bir state gereklidir: sayici!
-Diğer şeyler basitçe sayımın kendisinden türetilebilir.
-
-ADIM 0:
-  Aşağıdaki bileşeni inceleyerek ve state hookunu import ederek başlayın.
-
-ADIM 1:
-  State hookunu kullanara, bir 'sayici', 'setSayici' çifti oluşturun.
-  'sayici' state'inin ilk değeri 0 olarak yüklenmelidir.
-
-ADIM 2:
-  'stil' nesnesinde 'color' niteliği sabit olarak "royalblue" olarak belirlenmiştir.
-  Bunun yerine 'color' değerinin ne olması gerektiği, şu şekilde belirlenmelidir:
-  Eğer sayici çiftse "royalblue", değilse "crimson" olmalıdır.
-
-ADIM 3:
-  JSX'teki bazı sabit kodlanmış bilgileri, kıvrımlı parantezler ({}) içinde enterpolasyonlu ifadelerle değiştirmemiz gerekiyor.
-  Sabit olarak yazılmış "0" sayısını {sayici} değişkeni ile değiştirerek başlayın.
-  Sonra "çift" kelimesini şu kurala göre değiştirin: {eğer sayıcı çiftse, kelime `çift` değilse `tek` olacak}.
-
-ADIM 4:
-  Bu click handler'ın, "sayici" stateini artı bir yapacak şekilde programlamak için "setSayici"i kullanması gerekiyor.
-  Bu state değişiklikleri senkronize değil: güncellenen sayım, Sayac bileşeninin bir sonraki çalıştırmasında da gelir.
-  Sakın basitçe sayici++ yapmayın. Artı artı yasak! Bu tarz artırım bir sonraki çağırımda gelmez. Her zaman state'e yeni değer 
-  atamak için state güncelleyici kullanmalısınız.
-
-ADIM 5:
-  Bu click handler 'sayici' yi bir azaltmak için 'setSayici' ı kulanacak.
-  sayici-- SAKIN kullanmayın. Bu tarz kullanım bir sonraki çalıştırmada gelmez.
-
-ADIM 6:
-	Bu click handler 'sayici' yı sıfırlamak için 'setSayici' yi kullanacak.
-*/
-
-/* ADIM 0 buraya*/
+var _react = _interopRequireWildcard(require("react"));
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; } /*
+                                                                      SAYAÇ Talimatları
+                                                                      
+                                                                      Aşağıdaki kısa videoyu izleyin, UI ve Chrome Devtools'a dikkat edin:
+                                                                      https://www.ergineer.com/assets/materials/a664dfe7-sayac.gif
+                                                                      
+                                                                      Bu Sayacı oluşturmak için kaç adet state dilimine ihtiyacınız var? Başlamadan önce biraz üzerine düşünün!
+                                                                      
+                                                                      Saf bir geliştirici 3 farklı state dilimi diyebilir:
+                                                                        - Sayıcı
+                                                                        - Metnin kırmızı mı yoksa mavi mi olduğu
+                                                                        - Metnin "çift" mi yoksa "tek" mi olduğu
+                                                                      
+                                                                      Ancak burada sadece bir state gereklidir: sayici!
+                                                                      Diğer şeyler basitçe sayımın kendisinden türetilebilir.
+                                                                      
+                                                                      ADIM 0:
+                                                                        Aşağıdaki bileşeni inceleyerek ve state hookunu import ederek başlayın.
+                                                                      
+                                                                      ADIM 1:
+                                                                        State hookunu kullanara, bir 'sayici', 'setSayici' çifti oluşturun.
+                                                                        'sayici' state'inin ilk değeri 0 olarak yüklenmelidir.
+                                                                      
+                                                                      ADIM 2:
+                                                                        'stil' nesnesinde 'color' niteliği sabit olarak "royalblue" olarak belirlenmiştir.
+                                                                        Bunun yerine 'color' değerinin ne olması gerektiği, şu şekilde belirlenmelidir:
+                                                                        Eğer sayici çiftse "royalblue", değilse "crimson" olmalıdır.
+                                                                      
+                                                                      ADIM 3:
+                                                                        JSX'teki bazı sabit kodlanmış bilgileri, kıvrımlı parantezler ({}) içinde enterpolasyonlu ifadelerle değiştirmemiz gerekiyor.
+                                                                        Sabit olarak yazılmış "0" sayısını {sayici} değişkeni ile değiştirerek başlayın.
+                                                                        Sonra "çift" kelimesini şu kurala göre değiştirin: {eğer sayıcı çiftse, kelime `çift` değilse `tek` olacak}.
+                                                                      
+                                                                      ADIM 4:
+                                                                        Bu click handler'ın, "sayici" stateini artı bir yapacak şekilde programlamak için "setSayici"i kullanması gerekiyor.
+                                                                        Bu state değişiklikleri senkronize değil: güncellenen sayım, Sayac bileşeninin bir sonraki çalıştırmasında da gelir.
+                                                                        Sakın basitçe sayici++ yapmayın. Artı artı yasak! Bu tarz artırım bir sonraki çağırımda gelmez. Her zaman state'e yeni değer 
+                                                                        atamak için state güncelleyici kullanmalısınız.
+                                                                      
+                                                                      ADIM 5:
+                                                                        Bu click handler 'sayici' yi bir azaltmak için 'setSayici' ı kulanacak.
+                                                                        sayici-- SAKIN kullanmayın. Bu tarz kullanım bir sonraki çalıştırmada gelmez.
+                                                                      
+                                                                      ADIM 6:
+                                                                      	Bu click handler 'sayici' yı sıfırlamak için 'setSayici' yi kullanacak.
+                                                                      */ /*
+                                                                         import React from 'react'; /* ADIM 0 buraya*/ /*
+                                                                                                                       export default function Sayac() {
+                                                                                                                         /* ADIM 1 buraya*/ /*
+                                                                                                                                             const artirici = () => {
+                                                                                                                                               /* ADIM 4 buraya */ /* };
+                                                                                                                                                                   /* const azaltici = () => {
+                                                                                                                                                                      /* ADIM 5 */ /*};
+                                                                                                                                                                                   /*const reset = () => {
+                                                                                                                                                                                   };
+                                                                                                                                                                                     const stil = {
+                                                                                                                                                                                     fontSize: '1.5em',
+                                                                                                                                                                                     marginBottom: '0.3em',
+                                                                                                                                                                                     color: 'royalblue', /* ADIM 2 */ /* };
+                                                                                                                                                                                                                      
+                                                                                                                                                                                                                       return (
+                                                                                                                                                                                                                         <div className='widget-counter container'>
+                                                                                                                                                                                                                           <h2>Sayaç</h2>
+                                                                                                                                                                                                                           <div id='sayici' style={stil}>
+                                                                                                                                                                                                                             Sayı {sayici} {/* ADIM 3  buraya*/ /*      </div>
+                                                                                                                                                                                                                                                                      <div>
+                                                                                                                                                                                                                                                                        <button id='artirici' onClick={artirici}>Artırıcı</button>
+                                                                                                                                                                                                                                                                        <button id='decrement' onClick={azaltici}>Azaltıcı</button>
+                                                                                                                                                                                                                                                                        <button id='resetCount' onClick={reset}>Reset</button>
+                                                                                                                                                                                                                                                                      </div>
+                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                  );
+                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                */
+// ADIM 0 buraya
 
 function Sayac() {
-  /* ADIM 1 buraya*/
-
+  // ADIM 1 buraya
+  var _useState = (0, _react.useState)(0),
+    _useState2 = _slicedToArray(_useState, 2),
+    sayici = _useState2[0],
+    setSayici = _useState2[1];
   var artirici = function artirici() {
-    /* ADIM 4 buraya */
+    // ADIM 4 buraya
+    setSayici(function (prevSayici) {
+      return prevSayici + 1;
+    });
   };
   var azaltici = function azaltici() {
-    /* ADIM 5 */
+    // ADIM 5
+    setSayici(function (prevSayici) {
+      return prevSayici - 1;
+    });
   };
-  var reset = function reset() {};
+  var reset = function reset() {
+    setSayici(0);
+  };
   var stil = {
     fontSize: '1.5em',
     marginBottom: '0.3em',
-    color: 'royalblue' /* ADIM 2 */
+    color: sayici % 2 === 0 ? 'royalblue' : 'crimson' // ADIM 2
   };
 
   return /*#__PURE__*/_react.default.createElement("div", {
@@ -28968,7 +29012,7 @@ function Sayac() {
   }, /*#__PURE__*/_react.default.createElement("h2", null, "Saya\xE7"), /*#__PURE__*/_react.default.createElement("div", {
     id: "sayici",
     style: stil
-  }, "Say\u0131 ", sayici, " "), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", {
+  }, "Say\u0131 ", sayici, " ", sayici % 2 === 0 ? 'çift' : 'tek', " "), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", {
     id: "artirici",
     onClick: artirici
   }, "Art\u0131r\u0131c\u0131"), /*#__PURE__*/_react.default.createElement("button", {
@@ -28986,63 +29030,105 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = Input;
-var _react = _interopRequireDefault(require("react"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-/*
-INPUT Talimatlar
-
-Şu kısa videoyu izleyin:
-https://www.ergineer.com/assets/materials/a664dfe7-input.gif
-
-Bu INPUT'u oluşturmak için kaç adet state dilimine ihtiyacınız var? Başlamadan önce biraz üzerine düşünün!
-
-Evet sadece bir dilim yeterli! İçeride inputun değerini sürekli izleyeceğiz.
-Metnin royalblue veya crimson olacağı, input değerinin uzunluğundan elde edilebilir.
-
-ADIM 0:
-  Aşağıdaki bileşeni inceleyerek ve state hookunu import ederek başlayın.
-
-ADIM 1:
-  'inputDeğeri' ve 'setInputDeğeri' ikili state hookunu oluşturun.
-  Bu state boş bir string olarak yüklenecektir(initialize).
-
-ADIM 2:
-  'inputDeğeri' uzunluğu 10 karakteri geçerse renk crimson olacaktır.
-
-ADIM 3:
-  Bu <div /> içindeki inputa değer girildiğinde hepsini BÜYÜK HARFLERDE göstermesini nasıl sağlayabiliriz?
-
-ADIM 4:
-  Event nesnesinin içinde bulunan state'e input'un değerini atayın
-
-ADIM 5:
-  Input değerinin state'ını boşaltın. Reset hala çalışmıyor bir sonraki adımı inceleyin.
-
-ADIM 6:
-  Inputun başarılı bir şekilde resetlemesi için değerini state'ten almalıdır!
-  <input /> öğesine şu şekilde fazladan bir prop eklememiz gerekiyor: value={inputDeğeri}
-*/
-
-/* ADIM 0 */
+var _react = _interopRequireWildcard(require("react"));
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; } /*
+                                                                      INPUT Talimatlar
+                                                                      
+                                                                      Şu kısa videoyu izleyin:
+                                                                      https://www.ergineer.com/assets/materials/a664dfe7-input.gif
+                                                                      
+                                                                      Bu INPUT'u oluşturmak için kaç adet state dilimine ihtiyacınız var? Başlamadan önce biraz üzerine düşünün!
+                                                                      
+                                                                      Evet sadece bir dilim yeterli! İçeride inputun değerini sürekli izleyeceğiz.
+                                                                      Metnin royalblue veya crimson olacağı, input değerinin uzunluğundan elde edilebilir.
+                                                                      
+                                                                      ADIM 0:
+                                                                        Aşağıdaki bileşeni inceleyerek ve state hookunu import ederek başlayın.
+                                                                      
+                                                                      ADIM 1:
+                                                                        'inputDeğeri' ve 'setInputDeğeri' ikili state hookunu oluşturun.
+                                                                        Bu state boş bir string olarak yüklenecektir(initialize).
+                                                                      
+                                                                      ADIM 2:
+                                                                        'inputDeğeri' uzunluğu 10 karakteri geçerse renk crimson olacaktır.
+                                                                      
+                                                                      ADIM 3:
+                                                                        Bu <div /> içindeki inputa değer girildiğinde hepsini BÜYÜK HARFLERDE göstermesini nasıl sağlayabiliriz?
+                                                                      
+                                                                      ADIM 4:
+                                                                        Event nesnesinin içinde bulunan state'e input'un değerini atayın
+                                                                      
+                                                                      ADIM 5:
+                                                                        Input değerinin state'ını boşaltın. Reset hala çalışmıyor bir sonraki adımı inceleyin.
+                                                                      
+                                                                      ADIM 6:
+                                                                        Inputun başarılı bir şekilde resetlemesi için değerini state'ten almalıdır!
+                                                                        <input /> öğesine şu şekilde fazladan bir prop eklememiz gerekiyor: value={inputDeğeri}
+                                                                      */ /*
+                                                                         import React from 'react'; 
+                                                                         
+                                                                         export default function Input() {
+                                                                           
+                                                                         	
+                                                                           const inputuDeğiştir = evt => {
+                                                                             // When the input changes, its whole value can be found inside the event object.
+                                                                             // Log out the synthetic event object 'evt' and see for yourself.
+                                                                             const { value } = evt.target;
+                                                                         	
+                                                                             
+                                                                           };
+                                                                           const reset = () => {
+                                                                            
+                                                                           };
+                                                                         
+                                                                           const stil = {
+                                                                             fontSize: '1.5em',
+                                                                             marginBottom: '0.3em',
+                                                                             color: 'crimson', 
+                                                                           };
+                                                                         
+                                                                           return (
+                                                                             <div className='widget-input container'>
+                                                                               <h2>Input</h2>
+                                                                               <div id='output' style={stil}></div> {}
+                                                                               <div>
+                                                                         		<input id='input' type='text' onChange={inputuDeğiştir} /> {}
+                                                                                 <button id='resetInput' onClick={reset}>Reset</button>
+                                                                               </div>
+                                                                             </div>
+                                                                           );
+                                                                         }
+                                                                         */
+// ADIM 0
 
 function Input() {
-  /* ADIM 1 */
+  var _useState = (0, _react.useState)(''),
+    _useState2 = _slicedToArray(_useState, 2),
+    inputDeğeri = _useState2[0],
+    setInputDeğeri = _useState2[1]; // ADIM 1
 
   var inputuDeğiştir = function inputuDeğiştir(evt) {
-    // When the input changes, its whole value can be found inside the event object.
-    // Log out the synthetic event object 'evt' and see for yourself.
     var value = evt.target.value;
-
-    /* ADIM 4 */
+    setInputDeğeri(value.toUpperCase()); // ADIM 4
+    if (value.length > 10) {
+      setInputDeğeri(value);
+    }
   };
-
   var reset = function reset() {
-    /* ADIM 5 */
+    setInputDeğeri(''); // ADIM 5
   };
+
   var stil = {
     fontSize: '1.5em',
     marginBottom: '0.3em',
-    color: 'crimson' /* ADIM 2 */
+    color: inputDeğeri.length > 10 ? 'crimson' : 'royalblue' // ADIM 2
   };
 
   return /*#__PURE__*/_react.default.createElement("div", {
@@ -29050,10 +29136,11 @@ function Input() {
   }, /*#__PURE__*/_react.default.createElement("h2", null, "Input"), /*#__PURE__*/_react.default.createElement("div", {
     id: "output",
     style: stil
-  }), " ", /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("input", {
+  }, inputDeğeri), " ", /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("input", {
     id: "input",
     type: "text",
-    onChange: inputuDeğiştir
+    onChange: inputuDeğiştir,
+    value: inputDeğeri
   }), " ", /*#__PURE__*/_react.default.createElement("button", {
     id: "resetInput",
     onClick: reset
@@ -29066,58 +29153,107 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = RuhHalleri;
-var _react = _interopRequireDefault(require("react"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-/*
-RuhHalleri Talimatları
-
-Aşağıdaki kısa videoyu izleyin:
-https://www.ergineer.com/assets/materials/a664dfe7-ruhhalleri.gif
-
-Bu Sayacı oluşturmak için kaç adet state dilimine ihtiyacınız var? Başlamadan önce biraz üzerine düşünün!
-
-Bazıları 3 adet olduğunu söyleyecektir: her ruh hali için bir (mutlu, üzgün, ve bilinmeyen).
-Fakat tek bir state dilimi bu durumları saklamak için yeterlidir!
-
-ADIM 0:
-  Aşağıdaki bileşeni inceleyin ve state hook'u import edin.
-
-ADIM 1:
-  State hook'u kullanarak bir 'ruhHali' ve 'setRuhHali' oluşturun.
-  'ruhHali' state dilimi verilen 3 ruh halinden birisiyle yüklenecek.
-  Bu değişkenler zaten tanımlandı, bu uzun cümleleri bileşen içine tekrar yazmanıza gerek yok.
-
-ADIM 2:
-  Eğer state mutluysa rengi royalblue yapın, diğer durumlar için crimson yapın.
-
-ADIM 3:
-  JSX içinde sabit yazılmış ruh halini silip `ruhHali` state dilimine göre kıvrımlı parantezler içerisinde ekleyin.
-
-ADIM 4, 5, 6:
-  Click handler içinde `setRuhHali` ni kulanarak aşağıda tanımlanmış değişkenleri kullanarak ruhHali'ni güncelleyin
-*/
-
-/* ADIM 0 */
+var _react = _interopRequireWildcard(require("react"));
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; } /*
+                                                                      RuhHalleri Talimatları
+                                                                      
+                                                                      Aşağıdaki kısa videoyu izleyin:
+                                                                      https://www.ergineer.com/assets/materials/a664dfe7-ruhhalleri.gif
+                                                                      
+                                                                      Bu Sayacı oluşturmak için kaç adet state dilimine ihtiyacınız var? Başlamadan önce biraz üzerine düşünün!
+                                                                      
+                                                                      Bazıları 3 adet olduğunu söyleyecektir: her ruh hali için bir (mutlu, üzgün, ve bilinmeyen).
+                                                                      Fakat tek bir state dilimi bu durumları saklamak için yeterlidir!
+                                                                      
+                                                                      ADIM 0:
+                                                                        Aşağıdaki bileşeni inceleyin ve state hook'u import edin.
+                                                                      
+                                                                      ADIM 1:
+                                                                        State hook'u kullanarak bir 'ruhHali' ve 'setRuhHali' oluşturun.
+                                                                        'ruhHali' state dilimi verilen 3 ruh halinden birisiyle yüklenecek.
+                                                                        Bu değişkenler zaten tanımlandı, bu uzun cümleleri bileşen içine tekrar yazmanıza gerek yok.
+                                                                      
+                                                                      ADIM 2:
+                                                                        Eğer state mutluysa rengi royalblue yapın, diğer durumlar için crimson yapın.
+                                                                      
+                                                                      ADIM 3:
+                                                                        JSX içinde sabit yazılmış ruh halini silip `ruhHali` state dilimine göre kıvrımlı parantezler içerisinde ekleyin.
+                                                                      
+                                                                      ADIM 4, 5, 6:
+                                                                        Click handler içinde `setRuhHali` ni kulanarak aşağıda tanımlanmış değişkenleri kullanarak ruhHali'ni güncelleyin
+                                                                      */ /*
+                                                                         import React from 'react'; 
+                                                                         
+                                                                         const ilkRuhHali = 'Nasıl hissettiğimi bilmiyorum :-|';
+                                                                         const mutluRuhHali = 'Oldukça mutlu :)';
+                                                                         const uzgunRuhHali = 'Oldukça üzgün :(';
+                                                                         
+                                                                         export default function RuhHalleri() {
+                                                                           
+                                                                         	
+                                                                         	
+                                                                           const mutluEt = () => {
+                                                                           
+                                                                           };
+                                                                           const uZ = () => {
+                                                                            
+                                                                           };
+                                                                           const reset = () => {
+                                                                            
+                                                                           };
+                                                                         
+                                                                           const stil = {
+                                                                             fontSize: '1.5em',
+                                                                             marginBottom: '0.3em',
+                                                                             color: 'royalblue', 
+                                                                           };
+                                                                         
+                                                                           return (
+                                                                             <div className='widget-moods container'>
+                                                                               <h2>RuhHalleri</h2>
+                                                                         	<div id='ruhHali' style={stil}>'Nasıl hissettiğimi bilmiyorum :-|'</div> {}
+                                                                               <div>
+                                                                                 <button id='mutluEt' onClick={mutluEt}>Mutlu Et</button>
+                                                                                 <button id='uz' onClick={uZ}>Üz</button>
+                                                                                 <button id='resetRuhHali' onClick={reset}>Reset</button>
+                                                                               </div>
+                                                                             </div>
+                                                                           );
+                                                                         }*/
+// ADIM 0
 
 var ilkRuhHali = 'Nasıl hissettiğimi bilmiyorum :-|';
 var mutluRuhHali = 'Oldukça mutlu :)';
 var uzgunRuhHali = 'Oldukça üzgün :(';
 function RuhHalleri() {
-  /* ADIM 1 */
-
+  // ADIM 1
+  var _useState = (0, _react.useState)(ilkRuhHali),
+    _useState2 = _slicedToArray(_useState, 2),
+    ruhHali = _useState2[0],
+    setRuhHali = _useState2[1];
   var mutluEt = function mutluEt() {
-    /* ADIM 4 */
+    // ADIM 4
+    setRuhHali(mutluRuhHali);
   };
   var uZ = function uZ() {
-    /* ADIM 5 */
+    // ADIM 5
+    setRuhHali(uzgunRuhHali);
   };
   var reset = function reset() {
-    /* ADIM 6 */
+    // ADIM 6
+    setRuhHali(ilkRuhHali);
   };
   var stil = {
     fontSize: '1.5em',
     marginBottom: '0.3em',
-    color: 'royalblue' /* ADIM 2 */
+    color: ruhHali === mutluRuhHali ? 'royalblue' : 'crimson' // ADIM 2
   };
 
   return /*#__PURE__*/_react.default.createElement("div", {
@@ -29125,7 +29261,7 @@ function RuhHalleri() {
   }, /*#__PURE__*/_react.default.createElement("h2", null, "RuhHalleri"), /*#__PURE__*/_react.default.createElement("div", {
     id: "ruhHali",
     style: stil
-  }, "'Nas\u0131l hissetti\u011Fimi bilmiyorum :-|'"), " ", /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", {
+  }, ruhHali), " ", /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", {
     id: "mutluEt",
     onClick: mutluEt
   }, "Mutlu Et"), /*#__PURE__*/_react.default.createElement("button", {
@@ -29143,62 +29279,94 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = Dondurucu;
-var _react = _interopRequireDefault(require("react"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-/*
-Döndürücü Talimatlar
-
-Şu kısa videoyu izleyin:
-https://www.ergineer.com/assets/materials/a664dfe7-dondurucu.gif
-
-Bu Dondurucu'yü oluşturmak için kaç adet state dilimine ihtiyacınız var? Başlamadan önce biraz üzerine düşünün!
-
-İlk düşüncemize göre 2 state olması lazım:
-  - döndürücü görünür olduğunda veya değilken (bu belki boolean olabilir).
-  - Button'daki yazı "Döndürcüyü Göster" veya "Döndürücüyü Gizle" olduğunda.
-
-Fakat tek bir state dilimi yeterlidir, döndürücü.
-Metini bu state e göre yazdırabiliriz.
-
-ADIM 0:
-  Aşağıdaki bileşeni inceleyerek ve state hookunu import ederek başlayın.
-
-ADIM 1:
-  State hookunu kullanara, bir 'döndürücüAçık', 'setdöndürücüAcik' çifti oluşturun.
-  'döndürücüAçık' true olarak yüklendiğinde döndürücü görünür olacak.
-
-ADIM 2:
-  Bu mantıksal bir ifadedir. '&&'nin her iki yanındaki ifadeler true ise,
-  sağdaki değer tüm ifadenin değeri olur. '&&'nin her iki tarafında bir ifade varsa
-  ve false sa, soldaki tüm satırın değeri olur. 
-
-  Sabit yazılmış 'true' döndürücü açık veya kapalı durumuna göre değiştirin.
-
-ADIM 3:
-  'döndürücüAçık' değerine bağlı olarak "Gizle" veya "Göster" metni oluşturmak için button içinde bir ifade kullanın.
-
-ADIM 4:
-  Bu click handlerın, "açık olup olmadığını" şu anda olduğunun tersi olacak şekilde ayarlayarak döndürücüyü değiştirmesi gerekir.
-  "not" için kullandığımız operatörü hatırlıyor musunuz??
-*/
-
-/* STEP 0 */
+var _react = _interopRequireWildcard(require("react"));
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; } /*
+                                                                      Döndürücü Talimatlar
+                                                                      
+                                                                      Şu kısa videoyu izleyin:
+                                                                      https://www.ergineer.com/assets/materials/a664dfe7-dondurucu.gif
+                                                                      
+                                                                      Bu Dondurucu'yü oluşturmak için kaç adet state dilimine ihtiyacınız var? Başlamadan önce biraz üzerine düşünün!
+                                                                      
+                                                                      İlk düşüncemize göre 2 state olması lazım:
+                                                                        - döndürücü görünür olduğunda veya değilken (bu belki boolean olabilir).
+                                                                        - Button'daki yazı "Döndürcüyü Göster" veya "Döndürücüyü Gizle" olduğunda.
+                                                                      
+                                                                      Fakat tek bir state dilimi yeterlidir, döndürücü.
+                                                                      Metini bu state e göre yazdırabiliriz.
+                                                                      
+                                                                      ADIM 0:
+                                                                        Aşağıdaki bileşeni inceleyerek ve state hookunu import ederek başlayın.
+                                                                      
+                                                                      ADIM 1:
+                                                                        State hookunu kullanara, bir 'döndürücüAçık', 'setdöndürücüAcik' çifti oluşturun.
+                                                                        'döndürücüAçık' true olarak yüklendiğinde döndürücü görünür olacak.
+                                                                      
+                                                                      ADIM 2:
+                                                                        Bu mantıksal bir ifadedir. '&&'nin her iki yanındaki ifadeler true ise,
+                                                                        sağdaki değer tüm ifadenin değeri olur. '&&'nin her iki tarafında bir ifade varsa
+                                                                        ve false sa, soldaki tüm satırın değeri olur. 
+                                                                      
+                                                                        Sabit yazılmış 'true' döndürücü açık veya kapalı durumuna göre değiştirin.
+                                                                      
+                                                                      ADIM 3:
+                                                                        'döndürücüAçık' değerine bağlı olarak "Gizle" veya "Göster" metni oluşturmak için button içinde bir ifade kullanın.
+                                                                      
+                                                                      ADIM 4:
+                                                                        Bu click handlerın, "açık olup olmadığını" şu anda olduğunun tersi olacak şekilde ayarlayarak döndürücüyü değiştirmesi gerekir.
+                                                                        "not" için kullandığımız operatörü hatırlıyor musunuz??
+                                                                      */ /*
+                                                                         import React from 'react'; 
+                                                                         
+                                                                         export default function Dondurucu() {
+                                                                         
+                                                                         
+                                                                           const toggleDondurucu = () => {
+                                                                           
+                                                                           };
+                                                                         
+                                                                           return (
+                                                                             <div className='widget-spinner container'>
+                                                                               <h2>Döndürücü</h2>
+                                                                               {
+                                                                                 true && <div id='döndürücü' className='spinner'>--+--</div> 
+                                                                               }
+                                                                               <button id='toggleDondurucu' onClick={toggleDondurucu}>
+                                                                                  Gizle {}
+                                                                               </button>
+                                                                             </div>
+                                                                           );
+                                                                         }
+                                                                         */
+// ADIM 0
 
 function Dondurucu() {
-  /* ADIM 1 */
+  var _useState = (0, _react.useState)(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    dondurucuAcik = _useState2[0],
+    setDondurucuAcik = _useState2[1]; // ADIM 1
 
   var toggleDondurucu = function toggleDondurucu() {
-    /* ADIM 4 */
+    setDondurucuAcik(!dondurucuAcik); // ADIM 4
   };
+
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "widget-spinner container"
-  }, /*#__PURE__*/_react.default.createElement("h2", null, "D\xF6nd\xFCr\xFCc\xFC"), true && /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("h2", null, "D\xF6nd\xFCr\xFCc\xFC"), dondurucuAcik && /*#__PURE__*/_react.default.createElement("div", {
     id: "d\xF6nd\xFCr\xFCc\xFC",
     className: "spinner"
-  }, "--+--") /* ADIM 2 */, /*#__PURE__*/_react.default.createElement("button", {
+  }, "--+--") // ADIM 2
+  , /*#__PURE__*/_react.default.createElement("button", {
     id: "toggleDondurucu",
     onClick: toggleDondurucu
-  }, "Gizle "));
+  }, dondurucuAcik ? 'Gizle' : 'Göster', " "));
 }
 },{"react":"../node_modules/react/index.js"}],"components/Kareler.js":[function(require,module,exports) {
 "use strict";
@@ -29207,61 +29375,118 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = Kareler;
-var _react = _interopRequireDefault(require("react"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-/*
-Kareler Talimaları
-
-Aşağıdaki kısa videoyu izleyin:
-https://www.ergineer.com/assets/materials/a664dfe7-kareler.gif
-
-Bu bileşen, bir yandan "kare idlerinin" listesinin kaydını tutar,
-ve şu anda aktif olan id yi tutar. Yani iki dilim kullanılacak!
-Biri kareleri oluşturmak için kullanılır, diğeri ise id yi tutmak için,
-böylece bileşen hangi karenin o anda aktif olduğunu bilir.
-
-Herhangi bir noktada yalnızca bir kare aktif olabilir (ya da hiçbiri)
-
-Aşaıdaki yorumları takip edin.
-*/
-
-//Bu değişkeni YALNIZCA bir durum dilimini yüklemek için kullanın!
+var _react = _interopRequireWildcard(require("react"));
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; } /*
+                                                                      Kareler Talimaları
+                                                                      
+                                                                      Aşağıdaki kısa videoyu izleyin:
+                                                                      https://www.ergineer.com/assets/materials/a664dfe7-kareler.gif
+                                                                      
+                                                                      Bu bileşen, bir yandan "kare idlerinin" listesinin kaydını tutar,
+                                                                      ve şu anda aktif olan id yi tutar. Yani iki dilim kullanılacak!
+                                                                      Biri kareleri oluşturmak için kullanılır, diğeri ise id yi tutmak için,
+                                                                      böylece bileşen hangi karenin o anda aktif olduğunu bilir.
+                                                                      
+                                                                      Herhangi bir noktada yalnızca bir kare aktif olabilir (ya da hiçbiri)
+                                                                      
+                                                                      Aşaıdaki yorumları takip edin.
+                                                                      */ /*
+                                                                         import React from 'react';
+                                                                         
+                                                                         
+                                                                         //Bu değişkeni YALNIZCA bir durum dilimini yüklemek için kullanın!
+                                                                         const KareIdListesi = ['sqA', 'sqB', 'sqC', 'sqD'];
+                                                                         
+                                                                         
+                                                                         
+                                                                         export default function Kareler() {
+                                                                           // State hookunu 2 defa kullanın: 'kareler' ve
+                                                                           // 'aktifKare' olmak üzere. Birisi kare idlerini _dizi_ olarak tutacak, diğeri ise aktif olan
+                                                                           // kareyi gözlemleyecek. Sayfa yüklendiğinde aktif kare olmayacak,
+                                                                           // yani  'aktifKare' null olmalı.
+                                                                         	
+                                                                           const ClassAdiAl = id => {
+                                                                             // Bu bir click handler değildir, JSX içinde kullanılan bir yardımcıdır(helper).(aşağıya bakın)
+                                                                             // Eğer argüman olarak verilen id aktif kare state'indeki id ile eşleşirse, class adı 'active' olan bir string döndürecek
+                                                                             // diğer durumlar için boş döndürecek.
+                                                                             // Etkisini görmek için kareye sağ tıklayın ve "öğeyi inceleyin".
+                                                                         	return ''
+                                                                           };
+                                                                         
+                                                                           const AktifEt = id => {
+                                                                             // Bu bir _satır içinden çağırılmış_ click handler yardımcısıdır.
+                                                                             // id bağımsız değişkenini, stateteki aktif id olacak şekilde ayarlayın
+                                                                             // eğer zaten aktifse, o zaman önce state i resetlemeliyiz.
+                                                                           };
+                                                                         
+                                                                           return (
+                                                                             <div className='widget-squares container'>
+                                                                               <h2>Kareler</h2>
+                                                                               <div className='squares'>
+                                                                                 {
+                                                                                   // Kötü bug!  'KareIdListesi' yerine bir state dilimi kullanmalıyız.
+                                                                                   // Şöyle diyebiliriz: "aa bu çalışıyor!" Ama kareler bir state diliminden gelmiyorsa,
+                                                                                   // asla yeni kare ekleyemeyiz, kareleri düzenleyemeyiz ya da silemeyiz. Düzeltin!
+                                                                                   KareIdListesi.map(id =>
+                                                                                     <div
+                                                                                       id={id}
+                                                                                       key={id}
+                                                                                       className={`square ${ClassAdiAl(id)}`}
+                                                                                       onClick={() => AktifEt(id)}
+                                                                                     >
+                                                                                     </div>
+                                                                                   )
+                                                                                 }
+                                                                               </div>
+                                                                             </div>
+                                                                           );
+                                                                         }
+                                                                         */
 var KareIdListesi = ['sqA', 'sqB', 'sqC', 'sqD'];
 function Kareler() {
-  // State hookunu 2 defa kullanın: 'kareler' ve
-  // 'aktifKare' olmak üzere. Birisi kare idlerini _dizi_ olarak tutacak, diğeri ise aktif olan
-  // kareyi gözlemleyecek. Sayfa yüklendiğinde aktif kare olmayacak,
-  // yani  'aktifKare' null olmalı.
+  var _useState = (0, _react.useState)(KareIdListesi),
+    _useState2 = _slicedToArray(_useState, 2),
+    kareler = _useState2[0],
+    setKareler = _useState2[1]; // kare id'lerini tutacak state dilimi
+  var _useState3 = (0, _react.useState)(null),
+    _useState4 = _slicedToArray(_useState3, 2),
+    aktifKare = _useState4[0],
+    setAktifKare = _useState4[1]; // aktif kareyi tutacak state dilimi
 
   var ClassAdiAl = function ClassAdiAl(id) {
-    // Bu bir click handler değildir, JSX içinde kullanılan bir yardımcıdır(helper).(aşağıya bakın)
-    // Eğer argüman olarak verilen id aktif kare state'indeki id ile eşleşirse, class adı 'active' olan bir string döndürecek
-    // diğer durumlar için boş döndürecek.
-    // Etkisini görmek için kareye sağ tıklayın ve "öğeyi inceleyin".
-    return '';
+    return id === aktifKare ? 'active' : ''; // aktif kare ise 'active' class'ını döndür
   };
+
   var AktifEt = function AktifEt(id) {
-    // Bu bir _satır içinden çağırılmış_ click handler yardımcısıdır.
-    // id bağımsız değişkenini, stateteki aktif id olacak şekilde ayarlayın
-    // eğer zaten aktifse, o zaman önce state i resetlemeliyiz.
+    setAktifKare(function (prevAktifKare) {
+      return prevAktifKare === id ? null : id;
+    }); // id, şu anda aktif kare ise state'i sıfırla, değilse id'yi aktif kare yap
   };
+
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "widget-squares container"
   }, /*#__PURE__*/_react.default.createElement("h2", null, "Kareler"), /*#__PURE__*/_react.default.createElement("div", {
     className: "squares"
-  },
-  // Kötü bug!  'KareIdListesi' yerine bir state dilimi kullanmalıyız.
-  // Şöyle diyebiliriz: "aa bu çalışıyor!" Ama kareler bir state diliminden gelmiyorsa,
-  // asla yeni kare ekleyemeyiz, kareleri düzenleyemeyiz ya da silemeyiz. Düzeltin!
-  KareIdListesi.map(function (id) {
-    return /*#__PURE__*/_react.default.createElement("div", {
-      id: id,
-      key: id,
-      className: "square ".concat(ClassAdiAl(id)),
-      onClick: function onClick() {
-        return AktifEt(id);
-      }
-    });
+  }, kareler.map(function (id) {
+    return (
+      /*#__PURE__*/
+      // kareler state dilimini kullanarak kareleri oluştur
+      _react.default.createElement("div", {
+        id: id,
+        key: id,
+        className: "square ".concat(ClassAdiAl(id)),
+        onClick: function onClick() {
+          return AktifEt(id);
+        }
+      })
+    );
   })));
 }
 },{"react":"../node_modules/react/index.js"}],"components/Programcilar.js":[function(require,module,exports) {
@@ -29272,26 +29497,90 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = Programcilar;
 exports.enIyilerListesi = void 0;
-var _react = _interopRequireDefault(require("react"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-/*
-Programcilar Talimatları
-
-Şu kısa videoyu izleyin:
-https://www.ergineer.com/assets/materials/a664dfe7-programcilar.gif
-
-Bu bileşen, bir yandan programlama alanındaki öncülerin bir listesini,
-ve diğer tarafta o anda öne çıkan programcının idsini izler. Yani 2 adet state dilimi!
-Aynı zaman içinde yalnız bir harika programcıyı öne çıkarabiliriz.
-
-Yorumları takip edin.
-*/
-
-/* ADIM 0  */
-
-// Bu değişkeni YALNIZCA bir state dilimini başlatmak için kullanın!
-// JSX'te şu anda bu kuralı çiğneyen bir şey var...
-// Export syntaxı, test kitaplığının diziyi içe aktarabilmesi için gereklidir.
+var _react = _interopRequireWildcard(require("react"));
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; } /*
+                                                                      Programcilar Talimatları
+                                                                      
+                                                                      Şu kısa videoyu izleyin:
+                                                                      https://www.ergineer.com/assets/materials/a664dfe7-programcilar.gif
+                                                                      
+                                                                      Bu bileşen, bir yandan programlama alanındaki öncülerin bir listesini,
+                                                                      ve diğer tarafta o anda öne çıkan programcının idsini izler. Yani 2 adet state dilimi!
+                                                                      Aynı zaman içinde yalnız bir harika programcıyı öne çıkarabiliriz.
+                                                                      
+                                                                      Yorumları takip edin.
+                                                                      */ /*
+                                                                         import React from 'react';
+                                                                         
+                                                                         
+                                                                         
+                                                                         // Bu değişkeni YALNIZCA bir state dilimini başlatmak için kullanın!
+                                                                         // JSX'te şu anda bu kuralı çiğneyen bir şey var...
+                                                                         // Export syntaxı, test kitaplığının diziyi içe aktarabilmesi için gereklidir.
+                                                                         export const enIyilerListesi = [
+                                                                           { id: '1', isim: 'Ada Lovelace' },
+                                                                           { id: '2', isim: 'Grace Hopper' },
+                                                                           { id: '3', isim: 'Evelyn Boyd Granville' },
+                                                                           { id: '4', isim: 'Mary Kenneth Keller' },
+                                                                           { id: '5', isim: 'Frances Allen' },
+                                                                           { id: '6', isim: 'Carol Shaw' },
+                                                                         ];
+                                                                         
+                                                                         export default function Programcilar() {
+                                                                           // İki state dilimine ihtiyacımız olduğundan, state hooku iki kez kullanmamız gerekecek..
+                                                                           // Bir yanda programcılar listesi, diğer yanda öne çıkan programcının idsi.
+                                                                         
+                                                                         	
+                                                                           const oneCikaninIsmi = () => {
+                                                                             // Bunu sona bırakın!
+                                                                             // Bu bir event handler değil, yardımcıdır. Kullanımını JSX'te gözlemleyin.
+                                                                             // Öne çıkan geliştiricinin _isim_ adını döndürmek için her iki state dilimini kullanacak.
+                                                                             // Closureların güzelliği, argümanlar yoluyla bilgi enjekte etmeye gerek kalmadan programın 
+                                                                         	// bu bölgesinden her iki state dilimini de "görebilmemiz"dir.
+                                                                           };
+                                                                         
+                                                                           const stil = {
+                                                                             fontSize: '1.5em',
+                                                                             marginTop: '0.5em',
+                                                                             color: 'royalblue', // 🤔 kutlarken renk gold'a dönecek
+                                                                           };
+                                                                         
+                                                                           return (
+                                                                             <div className='widget-programmers container'>
+                                                                               <h2>Programcılar</h2>
+                                                                               <div className='programmers'>
+                                                                                 {
+                                                                                   /* Kötü bug! 'enIyilerListesi' yerine bir state dilimini maplemeliyiz.
+                                                                                   // Şöyle diyebiliriz: "aa bu çalışıyor!" Ama programcilar bir state diliminden gelmiyorsa,
+                                                                                   // asla yeni programci ekleyemeyiz, programcilari düzenleyemeyiz ya da silemeyiz. Düzeltin!
+                                                                                   " */ /*enIyilerListesi.map(dev =>
+                                                                                          <div className='programmer' key={dev.id}>
+                                                                                            {dev.isim} <button onClick={() => {/* burada dev.id 'yi öne çıkan id'ye atayın */ /*}}>Kutla</button>
+                                                                                                                                                                              </div>
+                                                                                                                                                                              )
+                                                                                                                                                                              }
+                                                                                                                                                                              </div>
+                                                                                                                                                                              <div id='featured' style={stil}>
+                                                                                                                                                                              {
+                                                                                                                                                                              // Üçlüler, bir şeyin "gerçekliğine" bağlı olarak "bir şeyi veya diğerini" ifade etmek için harikadır..
+                                                                                                                                                                              // Sözde-kod: öne çıkan true ise metin 1'i oluşturun, aksi takdirde metin 2'yi oluşturun..
+                                                                                                                                                                              // Sabit kodlanmış false'u doğru değişkenle değiştirin.
+                                                                                                                                                                              false
+                                                                                                                                                                              ? `🎉 Hadi ${oneCikaninIsmi()}'ı kutlayalım! 🥳`
+                                                                                                                                                                              : 'Harika bir programcı seçin'
+                                                                                                                                                                              }
+                                                                                                                                                                              </div>
+                                                                                                                                                                              </div>
+                                                                                                                                                                              );
+                                                                                                                                                                              }
+                                                                                                                                                                              */
 var enIyilerListesi = [{
   id: '1',
   isim: 'Ada Lovelace'
@@ -29313,47 +29602,265 @@ var enIyilerListesi = [{
 }];
 exports.enIyilerListesi = enIyilerListesi;
 function Programcilar() {
-  // İki state dilimine ihtiyacımız olduğundan, state hooku iki kez kullanmamız gerekecek..
-  // Bir yanda programcılar listesi, diğer yanda öne çıkan programcının idsi.
+  var _useState = (0, _react.useState)(enIyilerListesi),
+    _useState2 = _slicedToArray(_useState, 2),
+    programcilar = _useState2[0],
+    setProgramcilar = _useState2[1]; // programcılar listesini tutacak state dilimi
+  var _useState3 = (0, _react.useState)(''),
+    _useState4 = _slicedToArray(_useState3, 2),
+    oneCikanId = _useState4[0],
+    setOneCikanId = _useState4[1]; // öne çıkan programcının id'sini tutacak state dilimi
 
   var oneCikaninIsmi = function oneCikaninIsmi() {
-    // Bunu sona bırakın!
-    // Bu bir event handler değil, yardımcıdır. Kullanımını JSX'te gözlemleyin.
-    // Öne çıkan geliştiricinin _isim_ adını döndürmek için her iki state dilimini kullanacak.
-    // Closureların güzelliği, argümanlar yoluyla bilgi enjekte etmeye gerek kalmadan programın 
-    // bu bölgesinden her iki state dilimini de "görebilmemiz"dir.
+    var oneCikan = programcilar.find(function (dev) {
+      return dev.id === oneCikanId;
+    }); // öne çıkan programcıyı bul
+    return oneCikan ? oneCikan.isim : ''; // eğer öne çıkan varsa ismini döndür, yoksa boş döndür
   };
+
   var stil = {
     fontSize: '1.5em',
     marginTop: '0.5em',
-    color: 'royalblue' // 🤔 kutlarken renk gold'a dönecek
+    color: oneCikanId ? 'gold' : 'royalblue' // öne çıkan varsa renk gold, yoksa royalblue
   };
 
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "widget-programmers container"
   }, /*#__PURE__*/_react.default.createElement("h2", null, "Programc\u0131lar"), /*#__PURE__*/_react.default.createElement("div", {
     className: "programmers"
-  },
-  /* Kötü bug! 'enIyilerListesi' yerine bir state dilimini maplemeliyiz.
-  // Şöyle diyebiliriz: "aa bu çalışıyor!" Ama programcilar bir state diliminden gelmiyorsa,
-  // asla yeni programci ekleyemeyiz, programcilari düzenleyemeyiz ya da silemeyiz. Düzeltin!
-  " */
-  enIyilerListesi.map(function (dev) {
+  }, programcilar.map(function (dev) {
     return /*#__PURE__*/_react.default.createElement("div", {
       className: "programmer",
       key: dev.id
     }, dev.isim, " ", /*#__PURE__*/_react.default.createElement("button", {
-      onClick: function onClick() {/* burada dev.id 'yi öne çıkan id'ye atayın */}
+      onClick: function onClick() {
+        return setOneCikanId(dev.id);
+      }
     }, "Kutla"));
   })), /*#__PURE__*/_react.default.createElement("div", {
     id: "featured",
     style: stil
-  },
-  // Üçlüler, bir şeyin "gerçekliğine" bağlı olarak "bir şeyi veya diğerini" ifade etmek için harikadır..
-  // Sözde-kod: öne çıkan true ise metin 1'i oluşturun, aksi takdirde metin 2'yi oluşturun..
-  // Sabit kodlanmış false'u doğru değişkenle değiştirin.
-  false ? "\uD83C\uDF89 Hadi ".concat(oneCikaninIsmi(), "'\u0131 kutlayal\u0131m! \uD83E\uDD73") : 'Harika bir programcı seçin'));
+  }, oneCikanId ? "\uD83C\uDF89 Hadi ".concat(oneCikaninIsmi(), "'\u0131 kutlayal\u0131m! \uD83E\uDD73") : 'Harika bir programcı seçin'));
 }
+},{"react":"../node_modules/react/index.js"}],"components/Greeting.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _react = _interopRequireDefault(require("react"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var Greeting = function Greeting() {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, " Merhaba"));
+};
+var _default = Greeting;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js"}],"components/Todos.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Todos;
+var _react = _interopRequireWildcard(require("react"));
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+function Todos() {
+  var _useState = (0, _react.useState)([]),
+    _useState2 = _slicedToArray(_useState, 2),
+    todos = _useState2[0],
+    setTodos = _useState2[1]; // yapılacaklar listesi
+
+  var handleAddTodo = function handleAddTodo(e) {
+    e.preventDefault();
+    var newTodo = e.target.elements.todo.value;
+    if (newTodo.trim() !== '') {
+      setTodos([].concat(_toConsumableArray(todos), [{
+        id: Date.now(),
+        text: newTodo,
+        completed: false
+      }]));
+      e.target.reset();
+    }
+  };
+  var handleToggleTodo = function handleToggleTodo(id) {
+    setTodos(todos.map(function (todo) {
+      return todo.id === id ? _objectSpread(_objectSpread({}, todo), {}, {
+        completed: !todo.completed
+      }) : todo;
+    }));
+  };
+  var handleRemoveTodo = function handleRemoveTodo(id) {
+    setTodos(todos.filter(function (todo) {
+      return todo.id !== id;
+    }));
+  };
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "widget-todos container"
+  }, /*#__PURE__*/_react.default.createElement("h2", null, "Yap\u0131lacaklar Listesi"), /*#__PURE__*/_react.default.createElement("form", {
+    onSubmit: handleAddTodo
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    name: "todo",
+    placeholder: "Yap\u0131lacak ekle..."
+  }), /*#__PURE__*/_react.default.createElement("button", {
+    type: "submit"
+  }, "Ekle")), /*#__PURE__*/_react.default.createElement("ul", {
+    className: "todos"
+  }, todos.map(function (todo) {
+    return /*#__PURE__*/_react.default.createElement("li", {
+      key: todo.id,
+      className: todo.completed ? 'completed' : '',
+      onClick: function onClick() {
+        return handleToggleTodo(todo.id);
+      }
+    }, todo.text, /*#__PURE__*/_react.default.createElement("button", {
+      onClick: function onClick() {
+        return handleRemoveTodo(todo.id);
+      }
+    }, "Sil"));
+  })));
+}
+},{"react":"../node_modules/react/index.js"}],"components/Tictactoe.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _react = _interopRequireWildcard(require("react"));
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+var TicTacToe = function TicTacToe() {
+  var _useState = (0, _react.useState)(Array(9).fill('')),
+    _useState2 = _slicedToArray(_useState, 2),
+    board = _useState2[0],
+    setBoard = _useState2[1];
+  var _useState3 = (0, _react.useState)('X'),
+    _useState4 = _slicedToArray(_useState3, 2),
+    humanPlayer = _useState4[0],
+    setHumanPlayer = _useState4[1];
+  var _useState5 = (0, _react.useState)('O'),
+    _useState6 = _slicedToArray(_useState5, 2),
+    computerPlayer = _useState6[0],
+    setComputerPlayer = _useState6[1];
+  var _useState7 = (0, _react.useState)(null),
+    _useState8 = _slicedToArray(_useState7, 2),
+    winner = _useState8[0],
+    setWinner = _useState8[1];
+  (0, _react.useEffect)(function () {
+    if (winner) {
+      alert("Kazanan: ".concat(winner));
+    }
+  }, [winner]);
+  var isBoardFull = function isBoardFull() {
+    return board.every(function (cell) {
+      return cell !== '';
+    });
+  };
+  var checkWinner = function checkWinner(currentBoard, player) {
+    for (var i = 0; i < WINNING_COMBINATIONS.length; i++) {
+      var _WINNING_COMBINATIONS = _slicedToArray(WINNING_COMBINATIONS[i], 3),
+        a = _WINNING_COMBINATIONS[0],
+        b = _WINNING_COMBINATIONS[1],
+        c = _WINNING_COMBINATIONS[2];
+      if (currentBoard[a] === player && currentBoard[b] === player && currentBoard[c] === player) {
+        return true;
+      }
+    }
+    return false;
+  };
+  var handleCellClick = function handleCellClick(index) {
+    if (board[index] === '' && !winner) {
+      var newBoard = _toConsumableArray(board);
+      newBoard[index] = humanPlayer;
+      setBoard(newBoard);
+      if (checkWinner(newBoard, humanPlayer)) {
+        setWinner(humanPlayer);
+      } else if (!isBoardFull()) {
+        setTimeout(function () {
+          return computerMove(newBoard);
+        }, 300);
+      }
+    }
+  };
+  var computerMove = function computerMove(currentBoard) {
+    var availableCells = currentBoard.reduce(function (acc, cell, index) {
+      if (cell === '') return [].concat(_toConsumableArray(acc), [index]);
+      return acc;
+    }, []);
+    for (var i = 0; i < availableCells.length; i++) {
+      var _newBoard = _toConsumableArray(currentBoard);
+      _newBoard[availableCells[i]] = computerPlayer;
+      if (checkWinner(_newBoard, computerPlayer)) {
+        setBoard(_newBoard);
+        setWinner(computerPlayer);
+        return;
+      }
+    }
+    for (var _i2 = 0; _i2 < availableCells.length; _i2++) {
+      var _newBoard2 = _toConsumableArray(currentBoard);
+      _newBoard2[availableCells[_i2]] = humanPlayer;
+      if (checkWinner(_newBoard2, humanPlayer)) {
+        _newBoard2[availableCells[_i2]] = computerPlayer;
+        setBoard(_newBoard2);
+        return;
+      }
+    }
+    var randomIndex = availableCells[Math.floor(Math.random() * availableCells.length)];
+    var newBoard = _toConsumableArray(currentBoard);
+    newBoard[randomIndex] = computerPlayer;
+    setBoard(newBoard);
+    if (checkWinner(newBoard, computerPlayer)) {
+      setWinner(computerPlayer);
+    } else if (isBoardFull()) {
+      setWinner('Berabere');
+    }
+  };
+  var WINNING_COMBINATIONS = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "tic-tac-toe"
+  }, /*#__PURE__*/_react.default.createElement("h2", null, "Tic Tac Toe Oyunu"), /*#__PURE__*/_react.default.createElement("div", {
+    className: "table"
+  }, board.map(function (cell, index) {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      key: index,
+      className: "cell",
+      onClick: function onClick() {
+        return handleCellClick(index);
+      }
+    }, cell);
+  })));
+};
+var _default = TicTacToe;
+exports.default = _default;
 },{"react":"../node_modules/react/index.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
@@ -29365,11 +29872,14 @@ var _RuhHalleri = _interopRequireDefault(require("./components/RuhHalleri"));
 var _Dondurucu = _interopRequireDefault(require("./components/Dondurucu"));
 var _Kareler = _interopRequireDefault(require("./components/Kareler"));
 var _Programcilar = _interopRequireDefault(require("./components/Programcilar"));
+var _Greeting = _interopRequireDefault(require("./components/Greeting"));
+var _Todos = _interopRequireDefault(require("./components/Todos"));
+var _Tictactoe = _interopRequireDefault(require("./components/Tictactoe"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 var container = document.getElementById("root");
 var root = (0, _client.createRoot)(container);
-root.render( /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Sayac.default, null), /*#__PURE__*/_react.default.createElement(_RuhHalleri.default, null), /*#__PURE__*/_react.default.createElement(_Dondurucu.default, null), /*#__PURE__*/_react.default.createElement(_Input.default, null), /*#__PURE__*/_react.default.createElement(_Kareler.default, null), /*#__PURE__*/_react.default.createElement(_Programcilar.default, null)));
-},{"react":"../node_modules/react/index.js","react-dom/client":"../node_modules/react-dom/client.js","./components/Sayac":"components/Sayac.js","./components/Input":"components/Input.js","./components/RuhHalleri":"components/RuhHalleri.js","./components/Dondurucu":"components/Dondurucu.js","./components/Kareler":"components/Kareler.js","./components/Programcilar":"components/Programcilar.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+root.render( /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Sayac.default, null), /*#__PURE__*/_react.default.createElement(_RuhHalleri.default, null), /*#__PURE__*/_react.default.createElement(_Dondurucu.default, null), /*#__PURE__*/_react.default.createElement(_Input.default, null), /*#__PURE__*/_react.default.createElement(_Kareler.default, null), /*#__PURE__*/_react.default.createElement(_Programcilar.default, null), /*#__PURE__*/_react.default.createElement(_Greeting.default, null), /*#__PURE__*/_react.default.createElement(_Todos.default, null), /*#__PURE__*/_react.default.createElement(_Tictactoe.default, null)));
+},{"react":"../node_modules/react/index.js","react-dom/client":"../node_modules/react-dom/client.js","./components/Sayac":"components/Sayac.js","./components/Input":"components/Input.js","./components/RuhHalleri":"components/RuhHalleri.js","./components/Dondurucu":"components/Dondurucu.js","./components/Kareler":"components/Kareler.js","./components/Programcilar":"components/Programcilar.js","./components/Greeting":"components/Greeting.js","./components/Todos":"components/Todos.js","./components/Tictactoe":"components/Tictactoe.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -29394,7 +29904,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64069" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59227" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
